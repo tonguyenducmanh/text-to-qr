@@ -36,22 +36,22 @@ function generateQRCode() {
   } else {
     let segs = qrcodegen.QrSegment.makeSegments(textBuild);
     qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
-    drawCanvas(qrcode, 9, 4, colorLight, colorDark, appendCanvas());
+    drawCanvas(qrcode, 9, colorLight, colorDark, appendCanvas());
   }
 
   // Hiện nút tải xuống
   document.getElementById("download-section").style.display = "block";
 }
-function drawCanvas(qr, scale, border, lightColor, darkColor, canvas) {
-  if (scale <= 0 || border < 0) throw new RangeError("Value out of range");
-  var width = (qr.size + border * 2) * scale;
+function drawCanvas(qr, scale, lightColor, darkColor, canvas) {
+  if (scale <= 0) throw new RangeError("Value out of range");
+  var width = qr.size * scale;
   canvas.width = width;
   canvas.height = width;
   var ctx = canvas.getContext("2d");
-  for (var y = -border; y < qr.size + border; y++) {
-    for (var x = -border; x < qr.size + border; x++) {
+  for (var y = 0; y < qr.size; y++) {
+    for (var x = 0; x < qr.size; x++) {
       ctx.fillStyle = qr.getModule(x, y) ? darkColor : lightColor;
-      ctx.fillRect((x + border) * scale, (y + border) * scale, scale, scale);
+      ctx.fillRect(x * scale, y * scale, scale, scale);
     }
   }
 }
