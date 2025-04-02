@@ -1,4 +1,5 @@
 let qrcode = null;
+let sizeQR = 512;
 document
   .getElementById("generate-btn")
   .addEventListener("click", generateQRCode);
@@ -24,8 +25,8 @@ function generateQRCode() {
   if (usingQRV1) {
     qrcode = new QRCode(qrcodeDiv, {
       text: textBuild,
-      width: 512,
-      height: 512,
+      width: sizeQR,
+      height: sizeQR,
       colorDark: "#000000",
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.H,
