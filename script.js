@@ -36,7 +36,7 @@ function generateQRCode() {
   } else {
     let segs = qrcodegen.QrSegment.makeSegments(textBuild);
     qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
-    drawCanvas(qrcode, 9, 4, colorDark, colorLight, appendCanvas());
+    drawCanvas(qrcode, 9, 4, colorLight, colorDark, appendCanvas());
   }
 
   // Hiện nút tải xuống
