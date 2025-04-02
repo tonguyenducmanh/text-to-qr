@@ -18,6 +18,14 @@
         <div class="checkbox-wrapper">
           <input type="checkbox" id="encode-checkbox" checked />
           <label for="encode-checkbox">Mã hóa văn bản (btoa)</label>
+          <label
+            ><input type="radio" name="type-qr" id="type-qr-v1" checked />qrcode
+            gen v1</label
+          >
+          <label
+            ><input type="radio" name="type-qr" id="type-qr-v2" />qrcode gen
+            v2</label
+          > 
         </div>
         <button id="generate-btn">Tạo QR Code</button>
       </div>
@@ -27,6 +35,7 @@
       </div>
     </div>
     <script src="qrcode.js"></script>
+    <script src="qrcodegen.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
