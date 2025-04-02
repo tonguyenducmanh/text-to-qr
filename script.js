@@ -37,9 +37,6 @@ function generateQRCode() {
     qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
     drawCanvas(qrcode, sizeQR, colorLight, colorDark, appendCanvas());
   }
-
-  // Hiện nút tải xuống
-  document.getElementById("download-section").style.display = "block";
 }
 function drawCanvas(qr, sizeCanvas, lightColor, darkColor, canvas) {
   if (sizeCanvas <= 0) throw new RangeError("Value out of range");
