@@ -1,7 +1,8 @@
 let qrcode = null;
-let sizeQR = 512;
+let sizeQR = 436;
 let colorDark = "#000000";
 let colorLight = "#ffffff";
+
 document
   .getElementById("generate-btn")
   .addEventListener("click", generateQRCode);
@@ -10,6 +11,7 @@ document.getElementById("type-qr-v2").addEventListener("click", generateQRCode);
 document
   .getElementById("download-btn")
   .addEventListener("click", downloadQRCode);
+
 function generateQRCode() {
   const text = document.getElementById("text-input").value.trim();
   if (!text) {
@@ -36,22 +38,22 @@ function generateQRCode() {
   } else {
     let segs = qrcodegen.QrSegment.makeSegments(textBuild);
     qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
-    drawCanvas(qrcode, 9, colorLight, colorDark, appendCanvas());
+    drawCanvas(qrcode, sizeQR, colorLight, colorDark, appendCanvas());
   }
 
   // Hiện nút tải xuống
   document.getElementById("download-section").style.display = "block";
 }
-function drawCanvas(qr, scale, lightColor, darkColor, canvas) {
-  if (scale <= 0) throw new RangeError("Value out of range");
-  var width = qr.size * scale;
-  canvas.width = width;
-  canvas.height = width;
+function drawCanvas(qr, sizeCanvas, lightColor, darkColor, canvas) {
+  if (sizeCanvas <= 0) throw new RangeError("Value out of range");
+  let sizeDot = sizeCanvas / qr.size;
+  canvas.width = sizeCanvas;
+  canvas.height = sizeCanvas;
   var ctx = canvas.getContext("2d");
   for (var y = 0; y < qr.size; y++) {
     for (var x = 0; x < qr.size; x++) {
       ctx.fillStyle = qr.getModule(x, y) ? darkColor : lightColor;
-      ctx.fillRect(x * scale, y * scale, scale, scale);
+      ctx.fillRect(x * sizeDot, y * sizeDot, sizeDot, sizeDot);
     }
   }
 }
