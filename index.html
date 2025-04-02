@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to QR Code Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tạo mã QR từ text</h1>
+      <h2>Vui lòng quét ảnh và sử dụng atob('...') để lấy text</h2>
+      <div class="input-section">
+        <textarea
+          id="text-input"
+          placeholder="Nhập văn bản để tạo mã QR code..."
+        ></textarea>
+        <div class="checkbox-wrapper">
+          <input type="checkbox" id="encode-checkbox" checked />
+          <label for="encode-checkbox">Mã hóa văn bản (btoa)</label>
+        </div>
+        <button id="generate-btn">Tạo QR Code</button>
+      </div>
+      <div id="qrcode"></div>
+      <div id="download-section" style="display: none">
+        <button id="download-btn">Tải QR Code</button>
+      </div>
+    </div>
+    <script src="qrcode.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
