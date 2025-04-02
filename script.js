@@ -1,5 +1,7 @@
 let qrcode = null;
 let sizeQR = 512;
+let colorDark = "#000000";
+let colorLight = "#ffffff";
 document
   .getElementById("generate-btn")
   .addEventListener("click", generateQRCode);
@@ -27,14 +29,14 @@ function generateQRCode() {
       text: textBuild,
       width: sizeQR,
       height: sizeQR,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
+      colorDark: colorDark,
+      colorLight: colorLight,
       correctLevel: QRCode.CorrectLevel.H,
     });
   } else {
     let segs = qrcodegen.QrSegment.makeSegments(textBuild);
     qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
-    drawCanvas(qrcode, 9, 4, "#ffffff", "#000000", appendCanvas());
+    drawCanvas(qrcode, 9, 4, colorDark, colorLight, appendCanvas());
   }
 
   // Hiện nút tải xuống
