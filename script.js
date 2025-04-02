@@ -8,9 +8,6 @@ document
   .addEventListener("click", generateQRCode);
 document.getElementById("type-qr-v1").addEventListener("click", generateQRCode);
 document.getElementById("type-qr-v2").addEventListener("click", generateQRCode);
-document
-  .getElementById("download-btn")
-  .addEventListener("click", downloadQRCode);
 
 function generateQRCode() {
   const text = document.getElementById("text-input").value.trim();
@@ -62,25 +59,4 @@ function appendCanvas() {
   var result = document.createElement("canvas");
   outputElem.appendChild(result);
   return result;
-}
-
-function downloadQRCode() {
-  if (!qrcode) {
-    alert("Vui lòng tạo mã QR trước khi tải xuống!");
-    return;
-  }
-  // Lấy ảnh QR code
-  const img = document.querySelector("#qrcode img");
-  if (!img) {
-    alert("Không tìm thấy mã QR!");
-    return;
-  }
-  // Tạo link tải xuống
-  const link = document.createElement("a");
-  link.download = "qrcode.png";
-  link.href = img.src;
-  // Trigger download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
