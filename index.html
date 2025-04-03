@@ -16,21 +16,13 @@
         ></textarea>
         <div class="checkbox-wrapper">
           <input type="checkbox" id="encode-checkbox" />
-          <label for="encode-checkbox">Mã hóa văn bản (btoa)</label>
+          <label for="encode-checkbox">Mã hóa base 64</label>
           <input type="checkbox" id="remove-empty-checkbox" />
           <label for="remove-empty-checkbox">Xóa ký tự xuống dòng</label>
-          <label
-            ><input
-              type="radio"
-              name="type-qr"
-              id="qrcodegen-lib"
-              checked
-            />qrcodegen.js</label
-          >
-          <label
-            ><input type="radio" name="type-qr" id="qrcode-lib" />qrcode.js
-            lib</label
-          >
+          <input type="radio" name="type-qr" id="qrcodegen-lib" checked />
+          <label for="qrcodegen-lib">qrcodegen.js</label>
+          <input type="radio" name="type-qr" id="qrcode-lib" />
+          <label for="qrcode-lib">qrcode.js</label>
         </div>
         <button id="generate-btn">Tạo QR Code</button>
       </div>
