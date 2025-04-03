@@ -12,7 +12,6 @@ document.getElementById("type-qr-v2").addEventListener("click", generateQRCode);
 function generateQRCode() {
   const text = document.getElementById("text-input").value.trim();
   if (!text) {
-    alert("Vui lòng nhập văn bản để tạo mã QR!");
     return;
   }
   // Xóa QR code cũ nếu có
@@ -21,9 +20,13 @@ function generateQRCode() {
   // Tạo QR code mới
   let simpleText = text.replace(/(\r\n|\n|\r)/gm, "");
   let shouldEncode = document.getElementById("encode-checkbox").checked;
-  let usingQRV1 = document.getElementById("type-qr-v1").checked;
+  let usingQRLib1 = document.getElementById("type-qr-v1").checked;
   let textBuild = shouldEncode ? btoa(simpleText) : simpleText;
-  if (usingQRV1) {
+  if (usingQRLib1) {
+    let segs = qrcodegen.QrSegment.makeSegments(textBuild);
+    qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
+    drawCanvas(qrcode, sizeQR, colorLight, colorDark, appendCanvas());
+  } else {
     qrcode = new QRCode(qrcodeDiv, {
       text: textBuild,
       width: sizeQR,
@@ -32,10 +35,6 @@ function generateQRCode() {
       colorLight: colorLight,
       correctLevel: QRCode.CorrectLevel.H,
     });
-  } else {
-    let segs = qrcodegen.QrSegment.makeSegments(textBuild);
-    qrcode = qrcodegen.QrCode.encodeSegments(segs, qrcodegen.QrCode.Ecc.LOW);
-    drawCanvas(qrcode, sizeQR, colorLight, colorDark, appendCanvas());
   }
 }
 function drawCanvas(qr, sizeCanvas, lightColor, darkColor, canvas) {
