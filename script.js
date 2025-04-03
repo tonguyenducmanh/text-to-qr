@@ -12,6 +12,7 @@ function generateQRCode() {
   // Lấy giá trị từ các input
   let text = getUserInput();
   if (!text) {
+    qrcodeDiv.style.display = "none";
     return;
   }
 
@@ -28,7 +29,7 @@ function generateQRCode() {
   }
 
   // thêm css
-  qrcodeDiv.classList.add("qrcode-box");
+  qrcodeDiv.style.display = "flex";
 }
 
 /**
