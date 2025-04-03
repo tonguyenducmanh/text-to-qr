@@ -26,6 +26,9 @@ function generateQRCode() {
     // Nếu không thì sử dụng thư viện qrcode.js
     generateQRCodeJS(qrcodeDiv, textBuild, sizeQR, colorLight, colorDark);
   }
+
+  // thêm css
+  qrcodeDiv.classList.add("qrcode-box");
 }
 
 /**

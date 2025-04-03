@@ -19,9 +19,6 @@ body {
   width: 90%;
   max-width: 600px;
 }
-.input-section {
-  margin-bottom: 1.5rem;
-}
 .input-area {
   width: 100%;
   min-height: 100px;
@@ -75,10 +72,10 @@ button {
 button:hover {
   background-color: #45a049;
 }
-#qrcode {
+.qrcode-box {
   display: flex;
   justify-content: center;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
 }
 #download-section {
   margin-top: 1rem;
