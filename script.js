@@ -18,8 +18,13 @@ function generateQRCode() {
   let qrcodeDiv = document.getElementById("qrcode");
   qrcodeDiv.innerHTML = "";
   // Tạo QR code mới
-  let simpleText = text.replace(/(\r\n|\n|\r)/gm, "");
   let shouldEncode = document.getElementById("encode-checkbox").checked;
+  let shouldRemoveEmptyChar = document.getElementById(
+    "remove-empty-checkbox"
+  ).checked;
+  let simpleText = shouldRemoveEmptyChar
+    ? text.replace(/(\r\n|\n|\r)/gm, "")
+    : text;
   let usingQRLib1 = document.getElementById("type-qr-v1").checked;
   let textBuild = shouldEncode ? btoa(simpleText) : simpleText;
   if (usingQRLib1) {
