@@ -1,3 +1,3 @@
 1 tool convert text to qr dùng 2 thư viện đơn giản
 
-![demo ảnh](imgs/demo.png)
+![test](imgs/test.png)
