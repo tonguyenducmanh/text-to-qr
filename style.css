@@ -19,20 +19,10 @@ body {
   width: 90%;
   max-width: 600px;
 }
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
 .input-section {
   margin-bottom: 1.5rem;
 }
-textarea {
+.input-area {
   width: 100%;
   min-height: 100px;
   padding: 0.5rem;
@@ -40,6 +30,10 @@ textarea {
   border: 1px solid #ddd;
   border-radius: 5px;
   resize: vertical;
+}
+.input-area:focus {
+  outline: none;
+  border: 2px solid #4caf50;
 }
 .checkbox-wrapper {
   margin-bottom: 1rem;
